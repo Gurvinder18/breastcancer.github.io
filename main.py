@@ -5,9 +5,7 @@ from fastai.vision import *
 import PIL.Image as Image
 
 app = Flask("__name__")
-learn = load_learner('/Users/gurvi/Desktop/pythonProject1', 'tanay.h5')
-with open('non-IDC.png', 'rb') as Imagefile:
-    byteform = base64.b64encode(Imagefile.read())
+learn = load_learner('/', 'tanay.h5')
 
 @app.route('/', methods=['POST'])
 def home():
