@@ -9,14 +9,8 @@ learn = load_learner('/Users/gurvi/Desktop/pythonProject1', 'tanay.h5')
 with open('non-IDC.png', 'rb') as Imagefile:
     byteform = base64.b64encode(Imagefile.read())
 
-
-@app.route('/')
-def hello():
-    return "hello world"
-
-
-@app.route('/predict', methods=['POST'])
-def predict():
+@app.route('/', methods=['POST'])
+def home():
     encodedimage = request.form.get('encoded_image')
     b = base64.b64decode(encodedimage)
     img = Image.open(io.BytesIO(b))
