@@ -6,9 +6,12 @@ import PIL.Image as Image
 
 app = Flask("__name__")
 learn = load_learner('/', 'tanay.h5')
-
-@app.route('/', methods=['POST'])
+@app.route('/',)
 def home():
+    return "hello"
+
+@app.route('/predict', methods=['POST'])
+def predict():
     encodedimage = request.form.get('encoded_image')
     b = base64.b64decode(encodedimage)
     img = Image.open(io.BytesIO(b))
