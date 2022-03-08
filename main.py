@@ -6,7 +6,7 @@ import PIL.Image as Image
 
 app = Flask("__name__")
 learn = load_learner('/', 'tanay.h5')
-@app.route('/',)
+@app.route('/')
 def home():
     return "hello"
 
