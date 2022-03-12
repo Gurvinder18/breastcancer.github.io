@@ -1,17 +1,18 @@
 import cv2
+import io
 from flask import Flask, request, jsonify
 import base64
 from fastai.vision import *
 import PIL.Image as Image
 
 app = Flask("__name__")
-learn = load_learner('/', 'tanay.h5')
+learn = load_learner('/Users/gurvi/Desktop/pythonProject1', 'tanay.h5')
 @app.route('/')
-def home():
-    return "hello"
+def func():
+    return "Use / predict"
 
 @app.route('/predict', methods=['POST'])
-def predict():
+def home():
     encodedimage = request.form.get('encoded_image')
     b = base64.b64decode(encodedimage)
     img = Image.open(io.BytesIO(b))
@@ -21,7 +22,7 @@ def predict():
     result = learn.predict(image)
     print(result)
 
-    return jsonify(result)
+    return jsonify({'result':str(result)})
 
 
 if __name__ == "__main__":
